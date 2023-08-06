@@ -13,46 +13,11 @@ const Announcement = () => {
     };
 
     useEffect(() => {
-        fetch('https://api.github.com/repos/FlyingThaCat/subnetify/contents/README.md')
-            .then((response) => response.json())
+        fetch('https://api.github.com/repos/FlyingThaCat/subnetify/commits')
+            .then((res) => res.json())
             .then((data) => {
-                // Decode the base64 encoded content
-                const decodedContent = atob(data.content);
-                // ## Announcement
-                // | Status | Message                                           |
-                // |------- | ------------------------------------------------- |
-                // | Info   | Added Some Components, Button, And Level Selector |
-
-                // Split the decoded content into lines
-                const lines = decodedContent.split('\n');
-
-                // Find the line containing the announcement section
-                const announcementLine = lines.find((line) => line.includes('## Announcement'));
-
-                if (announcementLine) {
-                    // Extract the announcement table lines
-                    const tableLines = lines.slice(lines.indexOf(announcementLine) + 3, lines.length);
-                    
-                    // Find the line containing the announcement data
-                    const announcementDataLine = tableLines.find((line) => line.includes('|'));
-
-                    if (announcementDataLine) {
-                        // Extract the announcement data
-                        const announcementData = announcementDataLine.split('|');
-
-                         if (announcementData.length >= 3) {
-                            const status = announcementData[1].trim().toLowerCase();
-                            const message = announcementData[2].trim();
-
-                            const announcement = {
-                                status,
-                                message,
-                            };
-                            
-                            setAnnouncement(announcement);
-                         }
-                    }
-                }
+                const announcement = data[0].commit.message;
+                setAnnouncement({ message: announcement });
             });
     }, []);
 

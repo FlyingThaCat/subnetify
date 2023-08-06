@@ -1,10 +1,5 @@
 # Subnetify
 
-## Announcement
-| Status | Message                                           |
-|------- | ------------------------------------------------- |
-| Info   | Fixed The Announcement Logic, and className |
-
 ## Getting Started
 
 First, run the development server:
