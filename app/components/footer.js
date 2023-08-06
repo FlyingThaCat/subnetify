@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+
 const Footer = () => {
     return (
     <footer className="bg-white rounded-lg shadow m-4">
@@ -10,7 +13,9 @@ const Footer = () => {
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
             <li>
-                <a href="#" className="hover:underline">Contact</a>
+                <a href="https://www.instagram.com/XII_TKJ_1_JOHN/" target="_blank">
+                    <FontAwesomeIcon icon={faInstagram} />
+                </a>
             </li>
         </ul>
         </div>

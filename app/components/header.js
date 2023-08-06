@@ -17,7 +17,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={faNetworkWired} />
                     <h1 className="mx-2">Subnetify</h1>
                 </div>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                     <FontAwesomeIcon icon={faBook} className='mx-2' />
                     <div
                         className={`w-10 h-5 flex items-center bg-darkgun rounded-full cursor-pointer`}
@@ -30,7 +30,7 @@ const Header = () => {
                         ></div>
                     </div>
                     <FontAwesomeIcon icon={faBookOpen} className='mx-2' />
-                </div>
+                </div> */}
             </div>
         </header>
     );
