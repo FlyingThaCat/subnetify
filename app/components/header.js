@@ -11,7 +11,7 @@ const Header = () => {
     };
 
     return (
-        <header className='bg-white rounded-lg shadow m-4 dark:bg-gray-800'>
+        <header className='bg-white rounded-lg shadow m-4'>
             <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
                 <div className="flex items-center">
                     <FontAwesomeIcon icon={faNetworkWired} />
