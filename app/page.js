@@ -13,6 +13,21 @@ export default function Home() {
   const cidr = getRandomCidr(givenIp);
   var block = new Netmask(`${givenIp}/${cidr}`);
 
+  const ipOctets = block.base.split('.');
+  const cidrValue = parseInt(cidr, 10);
+
+  let gateway;
+  if (cidrValue <= 8) {
+    // Class A: Only the last octet is incremented by 1
+    gateway = `${ipOctets[0]}.${ipOctets[1]}.${ipOctets[2]}.${parseInt(ipOctets[3]) + 1}`;
+  } else if (cidrValue <= 16) {
+    // Class B: The last two octets are incremented by 1
+    gateway = `${ipOctets[0]}.${ipOctets[1]}.${parseInt(ipOctets[2]) + 1}.${parseInt(ipOctets[3]) + 1}`;
+  } else if (cidrValue <= 24) {
+    // Class C: Only the last octet is incremented by 1
+    gateway = `${ipOctets[0]}.${ipOctets[1]}.${ipOctets[2]}.${parseInt(ipOctets[3]) + 1}`;
+  }
+
   const datas = {
     "question" : {
       ip: givenIp,
@@ -26,11 +41,10 @@ export default function Home() {
       broadcast: block.broadcast,
       totalHost: block.size,
       ipStart: block.first,
-      ipLast: block.last
+      ipLast: block.last,
+      ipGateway: gateway
     }
   }
-
-  console.log(datas)
 
   return (
     <>
@@ -41,7 +55,7 @@ export default function Home() {
       <div className="">
       {/* <LevelSelector></LevelSelector> */}
       <QuestionBlock datas={datas}></QuestionBlock>
-      <AnswerBlock></AnswerBlock>
+      <AnswerBlock datas={datas}></AnswerBlock>
       </div>
     </main>
     <Footer></Footer>
