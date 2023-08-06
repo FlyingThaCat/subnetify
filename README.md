@@ -3,7 +3,7 @@
 ## Announcement
 | Status | Message                                           |
 |------- | ------------------------------------------------- |
-| Info   | Added Some Components, Button, And Level Selector |
+| Info   | Fixed The Announcement Logic, and className |
 
 ## Getting Started
 
